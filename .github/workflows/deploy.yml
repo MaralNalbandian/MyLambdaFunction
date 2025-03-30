@@ -19,14 +19,17 @@ jobs:
         run: ls -la   
           
       - name: Restore dependencies
-        run: dotnet restore ./MyLambdaFunction.csproj
+        run: dotnet restore MyLambdaFunction.sln
         
       - name: Build
         run: dotnet build --configuration Release --no-restore
         
       - name: Test
         run: dotnet test --no-restore --verbosity normal
-        
+      
+      - name: List src directory contents
+        run: ls -la src
+      
       - name: Publish
         run: dotnet publish -c Release -o ./publish
         
