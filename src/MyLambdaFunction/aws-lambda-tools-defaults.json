@@ -6,7 +6,7 @@
     "All the command line options for the Lambda command can be specified in this file."
   ],
   "profile": "",
-  "region": "ap-southeast-2",
+  "region": "",
   "configuration": "Release",
   "function-architecture": "x86_64",
   "function-runtime": "dotnet8",
