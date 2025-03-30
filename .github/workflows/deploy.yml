@@ -30,9 +30,8 @@ jobs:
       - name: List src directory contents
         run: ls -la src
       
-      - name: Publish
-        run: dotnet publish src/MyLambdaFunction/MyLambdaFunction.csproj -c Release -o ./publish /p:PublishReadyToRun=true
-
+      - name: Publish Lambda Project
+        run: dotnet publish src/MyLambdaFunction/MyLambdaFunction.csproj -c Release -o ./publish /p:PublishReadyToRun=false /p:GenerateRuntimeConfigurationFiles=true
         
       - name: Deploy to AWS Lambda
         uses: aws-actions/configure-aws-credentials@v2
