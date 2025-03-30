@@ -40,5 +40,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      - name: Deploy Lambda function
-        run: aws lambda update-function-code --function-name my-lambda-function --zip-file fileb://lambda.zip
+      - name: Package Lambda
+        run: |
+          cd publish
+          zip -r ../lambda.zip *
+          cd ..
+          ls -la # Verify the zip file exists
+        
+      - name: Deploy to Lambda
+        run: |
+          aws lambda update-function-code --function-name my-lambda-function --zip-file fileb://lambda.zip
